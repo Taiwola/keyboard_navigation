@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Navigation Demo</title>
+</head>
+<body>
+    <nav role="navigation">
+        <h1>Site Navigation</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+    <main role="main">
+        <h2>Main Content</h2>
+        <p>This is the main content area. <a href="#learn">Learn more</a>.</p>
+        <article role="article">
+            <h3>Article Title</h3>
+            <h4>Subheading</h4>
+            <p>Article content here.</p>
+        </article>
+    </main>
+    <aside role="complementary">
+        <h5>Sidebar</h5>
+        <p>Additional info.</p>
+    </aside>
+    <section role="form">
+        <h6>Form Section</h6>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    <footer role="contentinfo">
+        <p>Footer content. <a href="#contact">Contact</a>.</p>
+    </footer>
+
+    <button onclick="addDynamicContent()">Add Dynamic Content</button>
+    <script>
+        function addDynamicContent() {
+            const newSection = document.createElement('section');
+            newSection.setAttribute('role', 'region');
+            newSection.innerHTML = '<h2>New Section</h2><p>Dynamic content with <a href="#new">new link</a>.</p>';
+            document.body.appendChild(newSection);
+        }
+    </script>
+    <script src="navigate.js"></script>
+    <script>
+        initKeyboardNav()
+    </script>
+</body>
+</html>
