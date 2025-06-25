@@ -2,6 +2,9 @@ function initKeyboardNav() {
     // State to track navigation direction
     let navigationDirection = 'forward';
 
+
+    const controller = new AbortController();
+
     // Utility Functions
     function filterElementsByTags(elements, options = {}) {
         const { tags = [] } = options;
@@ -136,13 +139,13 @@ function initKeyboardNav() {
                 tag: el.tagName.toLowerCase(),
             })));
         }
-    });
+    }, {signal: controller.signal});
 
     // Cleanup function
     return function cleanup() {
         observer.disconnect();
         document.head.removeChild(style);
-        document.removeEventListener('keydown', arguments.callee);
+       controller.abort();
         // Clear all highlights
         arrayAllTags.forEach(el => clearFocusAndStyle(el));
     };
